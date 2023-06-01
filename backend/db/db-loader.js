@@ -7,16 +7,15 @@ mongoosePaginate.paginate.options = {
 }
 global.ObjectId = mongoose.Types.ObjectId
 
-global.dbnull = (doc, cb, msg = 'Kayıt bulunamadı') => {
+global.docNull = (doc, cb, msg = 'Not found') => {
 	if (doc != null) {
 		return true
 	} else {
-		let err = { code: 'RECORD_NOT_FOUND', message: msg }
 		if (!cb) {
-			throw err
+			throw msg
 			return false
 		} else {
-			cb(err)
+			cb(msg)
 			return false
 		}
 	}

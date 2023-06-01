@@ -28,8 +28,7 @@ module.exports = () => new Promise((resolve, reject) => {
 
   // testControllers(true)
   // .then(() => {
-  require('./rest-api/routes')(app)
-  eventLog(`[RestAPI]`.cyan, 'started')
+
   resolve(app)
   // })
   // .catch(reject)

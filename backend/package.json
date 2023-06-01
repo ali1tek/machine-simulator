@@ -1,27 +1,21 @@
 {
-  "name": "connector-server",
+  "name": "machine-simulator",
   "version": "2.0.1",
-  "description": "Manages socket clients and provides Restful API service",
+  "description": "It simulates factory machines",
   "scripts": {
-    "start": "nodemon connector-server.js",
-    "makedoc":"cd ./docs/make-docs & makedoc1.bat & makedoc2.bat & makedoc3.bat"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/connectorjs/connector-server.git"
   },
   "keywords": [
-    "connectorjs",
-    "websocket",
+    "machine learning",
+    "machine simulator",
+    "socket",
     "restful",
     "api",
-    "mysql",
-    "mssql",
     "mongodb",
-    "pg",
-    "miajupiter",
-    "read-excel",
-    "write-excel",
     "client",
     "server"
   ],
