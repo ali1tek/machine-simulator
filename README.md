@@ -1,2 +1,3 @@
-# machine-simulator
-Archivity machine simulator
+# Archivity Machine Simulator
+
+It simulates any machine in factories. 
