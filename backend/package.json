@@ -1,0 +1,70 @@
+{
+  "name": "connector-server",
+  "version": "2.0.1",
+  "description": "Manages socket clients and provides Restful API service",
+  "scripts": {
+    "start": "nodemon connector-server.js",
+    "makedoc":"cd ./docs/make-docs & makedoc1.bat & makedoc2.bat & makedoc3.bat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connectorjs/connector-server.git"
+  },
+  "keywords": [
+    "connectorjs",
+    "websocket",
+    "restful",
+    "api",
+    "mysql",
+    "mssql",
+    "mongodb",
+    "pg",
+    "miajupiter",
+    "read-excel",
+    "write-excel",
+    "client",
+    "server"
+  ],
+  "author": "MiaJupiter Developer Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/connectorjs/connector-server/issues"
+  },
+  "homepage": "https://github.com/connectorjs/connector-server#readme",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "axios": "^1.3.2",
+    "body-parser": "^1.20.1",
+    "btoa": "^1.2.1",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
+    "env-sample": "^2.1.5",
+    "eval": "^0.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "mongodb": "^5.0.1",
+    "mongoose": "^6.9.1",
+    "mongoose-aggregate-paginate-v2": "^1.0.6",
+    "mongoose-paginate-v2": "^1.7.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.2",
+    "node-mailer": "^0.1.1",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.20",
+    "object-sizeof": "^2.6.0",
+    "sib-api-v3-sdk": "^8.5.0",
+    "systeminformation": "^5.17.8",
+    "unique-username-generator": "^1.1.3",
+    "use-strict": "^1.0.1",
+    "uuid": "^9.0.0",
+    "ws": "^8.12.0"
+  }
+}
