@@ -11,7 +11,7 @@ module.exports = function (dbModel) {
 			},
 			params: [
 				{
-					name: { type: String, default: '', index: true },
+					name: { type: String, default: '',required:true, index: true },
 					min: { type: Number, default: 0 },
 					max: { type: Number, default: 100 },
 					maxDiffValuePerCycle: { type: Number, default: 3 },
@@ -19,7 +19,7 @@ module.exports = function (dbModel) {
 					randomDataPeriod: {
 						type: Number,
 						default: 1000,
-						min: 100,
+						min: 1000,
 						max: 86400,
 					},
 					value: { type: Number, default: 50 },

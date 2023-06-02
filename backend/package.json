@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/connectorjs/connector-server.git"
+    "url": "git+https://github.com/ali1tek/machine-simulator.git"
   },
   "keywords": [
     "machine learning",
@@ -19,12 +19,12 @@
     "client",
     "server"
   ],
-  "author": "MiaJupiter Developer Team",
+  "author": "Archivity Developer Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/connectorjs/connector-server/issues"
+    "url": "https://github.com/ali1tek/machine-simulator/issues"
   },
-  "homepage": "https://github.com/connectorjs/connector-server#readme",
+  "homepage": "https://github.com/ali1tek/machine-simulator#readme",
   "dependencies": {
     "atob": "^2.1.2",
     "axios": "^1.3.2",

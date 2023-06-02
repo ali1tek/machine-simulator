@@ -1,6 +1,7 @@
 (async ()=>{
   global.__root = __dirname
   await require('./lib/initialize')()
+  
   await require('./db/db-loader')()
   var app=await require('./app')()
   await require('./rest/routes')(app)
@@ -10,8 +11,7 @@
   global.simulator= require('./simulator/simulator-service')
 
   simulator.start()
-  .then(resp=>{
-    eventLog(resp.green)
+  .then(()=>{
     eventLog(`Application was started properly :-)`.yellow)
   })
   .catch(errorLog)
