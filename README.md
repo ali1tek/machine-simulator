@@ -4,7 +4,7 @@ It simulates any machine in factories.
 
 ## Structure
 
-![](docs/img/archivity-iot-system.drawio.svg)
+![](docs/img/archivity-iot-system.jpg)
 
 ## Install
 
