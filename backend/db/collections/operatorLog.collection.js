@@ -2,6 +2,7 @@ const collectionName = path.basename(__filename, '.collection.js')
 module.exports = function (dbModel) {
 	let schema = mongoose.Schema(
 		{
+      idCardNo:{type:String, default:'', index:true},
 			machine: {
 				type: mongoose.Types.ObjectId,
 				ref: 'machine',
@@ -10,8 +11,6 @@ module.exports = function (dbModel) {
 			},
 			logDate: { type: Date, default: Date.now, index: true },
       status: { type: String, default: '', index: true },
-			param: { type: String, default: '', index: true },
-      value: { type: Number, default: 0, index:true },
 			transferred:{type:Boolean, default:false, index:true},
       transferredDate: { type: Date, default: Date.now},
 		},

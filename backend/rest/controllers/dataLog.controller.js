@@ -14,19 +14,20 @@ module.exports = (member, dbModel, req) =>
 				break
 		}
 	})
+
 function getOne(member, dbModel, req) {
 	return new Promise((resolve, reject) => {
-		dbModel.machineLog
+		dbModel.dataLog
 			.findOne({ _id: req.params.param1 })
 			.then(resolve)
 			.catch(reject)
 	})
 }
+
 function getList(member, dbModel, req) {
 	return new Promise((resolve, reject) => {
 		let options = {
 			page: req.query.page || 1,
-      select:'-details -id',
       populate:[{
         path:'machine',
         select:'_id name'
@@ -37,15 +38,14 @@ function getList(member, dbModel, req) {
 			options.limit = req.query.pageSize || req.query.limit
 
 		let filter = {}
-
-		if ((req.query.passive || '') != '') {
-			filter.passive = req.query.passive
+		if ((req.query.transferred || '') != '') {
+			filter.transferred = req.query.transferred
 		}
 
     if ((req.query.machine || '') != '') {
 			filter.machine = req.query.machine
 		}
 
-		dbModel.machineLog.paginate(filter, options).then(resolve).catch(reject)
+		dbModel.dataLog.paginate(filter, options).then(resolve).catch(reject)
 	})
 }

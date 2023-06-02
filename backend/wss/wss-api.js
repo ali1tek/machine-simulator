@@ -15,7 +15,7 @@ module.exports = async function (httpServer) {
     global.wss = new WebSocketServer({
       server: httpServer,
       autoAcceptConnections: true,
-      path: '/connector'
+      path: '/ws'
     })
     global.wss.socketListByUuid = {}
     global.wss.socketListByClientId = {}
@@ -33,14 +33,7 @@ module.exports = async function (httpServer) {
       socket.sendSuccess = sendSuccess
       global.wss.socketListByUuid[socket.id] = socket
       socket.callbackList = {}
-      socket.connector = {
-        _id: '',
-        clientId: '',
-        clientPass: '',
-        lastUuid: socket.id,
-        lastOnline: new Date(),
-        lastIP: socket.ip
-      }
+      
 
       socket.on('pong', () => {
         socket.isAlive = true

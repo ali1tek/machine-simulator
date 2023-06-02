@@ -57,7 +57,7 @@ function masterControllers(app, route, folder) {
 						else {
 							res.status(200).json({
 								success: true,
-								data: data,
+								data: manipulateResponse(data),
 							})
 						}
 					})
@@ -73,7 +73,6 @@ function getController(folder, funcName) {
 		folder,
 		`${funcName}.controller.js`
 	)
-  console.log(`controllerName`, controllerName)
 	if (fs.existsSync(controllerName) == false) {
 		return null
 	} else {
@@ -122,6 +121,41 @@ function passport(req) {
 			username: 'admin',
 		})
 	})
+}
+
+function manipulateResponse(obj){
+  if (obj != undefined) {
+    if(obj.pagingCounter!=undefined)
+      delete obj.pagingCounter
+    
+    if(obj.limit!=undefined){
+      obj.pageSize=obj.limit
+      delete obj.limit
+    }
+    if(obj.totalDocs!=undefined){
+      obj.recordCount=obj.totalDocs
+      delete obj.totalDocs
+    }
+    if(obj.totalPages!=undefined){
+      obj.pageCount=obj.totalPages
+      delete obj.totalPages
+    }
+    // if (typeof obj['limit'] != 'undefined' && typeof obj['totalDocs'] != 'undefined' && typeof obj['totalPages'] != 'undefined' && typeof obj['page'] != 'undefined') {
+    //   obj['pageSize'] = obj.limit
+    //   obj.limit = undefined
+    //   delete obj.limit
+
+    //   obj['recordCount'] = obj.totalDocs
+    //   obj.totalDocs = undefined
+    //   delete obj.totalDocs
+
+    //   obj['pageCount'] = obj.totalPages
+    //   obj.totalPages = undefined
+    //   delete obj.totalPages
+
+    // }
+  }
+  return obj
 }
 
 global.restError = {

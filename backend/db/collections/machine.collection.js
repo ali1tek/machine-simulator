@@ -40,6 +40,12 @@ module.exports = function (dbModel) {
 				index: true,
 			},
       statusChangedDate:{ type: Date, default: Date.now, index: true },
+      operatorCount:{type:Number,default:1},
+      operators:[{
+        idCardNo:{type:String, default:'', index:true},
+        startDate: { type: Date, default: Date.now},
+        status:{type:String, default:'', enum:['working','meal-break','toilet','tea-break']}
+      }],
 			passive: { type: Boolean, default: false, index: true },
 			createdDate: { type: Date, default: Date.now},
 			modifiedDate: { type: Date, default: Date.now, index: true },

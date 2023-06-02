@@ -7,8 +7,17 @@
   eventLog(`[RestAPI]`.cyan, 'started')
   var httpServer = await require('./lib/http-server')(process.env.HTTP_PORT, app)
   
+  global.simulator= require('./simulator/simulator-service')
+
+  simulator.start()
+  .then(resp=>{
+    eventLog(resp.green)
+    eventLog(`Application was started properly :-)`.yellow)
+  })
+  .catch(errorLog)
+
   // await require('./wss/wss')(httpServer)
-  eventLog(`Application was started properly :-)`.yellow)
+  
   if(process.env.NODE_ENV=='development'){
     eventLog(`http://localhost:${process.env.HTTP_PORT}`)
   }

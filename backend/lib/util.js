@@ -140,3 +140,12 @@ exports.moduleLoader=(folder, suffix)=>{
 exports.randomNumber = function (min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+exports.clone=function(obj){
+  if(Array.isArray(obj) || typeof obj=='object'){
+    return JSON.parse(JSON.stringify(obj))
+  }else{
+    return obj
+  }
+  
+}
