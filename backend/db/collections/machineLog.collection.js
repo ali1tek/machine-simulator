@@ -4,7 +4,7 @@ module.exports = function (dbModel) {
 		{
 			machine: {
 				type: mongoose.Types.ObjectId,
-				ref: 'machines',
+				ref: 'machine',
 				required: true,
 				index: true,
 			},
@@ -15,6 +15,7 @@ module.exports = function (dbModel) {
 				enum: ['status', 'technical', 'shift'],
 				index: true,
 			},
+      message:{type:String, default:''},
 			description: { type: String, default: '' },
 			details: { type: Object, default: null },
 		},

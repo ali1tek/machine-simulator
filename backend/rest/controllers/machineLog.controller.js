@@ -25,7 +25,7 @@ module.exports = (member, dbModel, req) =>
 	})
 function getOne(member, dbModel, req) {
 	return new Promise((resolve, reject) => {
-		dbModel.machines
+		dbModel.machineLog
 			.findOne({ _id: req.params.param1 })
 			.then(resolve)
 			.catch(reject)
@@ -35,6 +35,11 @@ function getList(member, dbModel, req) {
 	return new Promise((resolve, reject) => {
 		let options = {
 			page: req.query.page || 1,
+      select:'-details -id',
+      populate:[{
+        path:'machine',
+        select:'_id name'
+      }]
 		}
 
 		if (req.query.pageSize || req.query.limit)
@@ -46,14 +51,18 @@ function getList(member, dbModel, req) {
 			filter.passive = req.query.passive
 		}
 
-		dbModel.machines.paginate(filter, options).then(resolve).catch(reject)
+    if ((req.query.machine || '') != '') {
+			filter.machine = req.query.machine
+		}
+
+		dbModel.machineLog.paginate(filter, options).then(resolve).catch(reject)
 	})
 }
 
 function post(member, dbModel, req) {
 	return new Promise((resolve, reject) => {
 		let data = req.body || {}
-		let newDoc = new dbModel.machines(data)
+		let newDoc = new dbModel.machineLog(data)
 
 		if (!epValidateSync(newDoc, reject)) return
 
@@ -61,23 +70,32 @@ function post(member, dbModel, req) {
 	})
 }
 
-function put(member, dbModel, req) {
-	return new Promise((resolve, reject) => {
-		if (req.params.param1 == undefined) return restError.param1(req, reject)
+// function put(member, dbModel, req) {
+// 	return new Promise((resolve, reject) => {
+// 		if (req.params.param1 == undefined) return restError.param1(req, reject)
 
+// 		let data = req.body || {}
+// 		data._id = req.params.param1
+// 		dbModel.machineLog
+// 			.findOne({ _id: data._id })
+// 			.then((doc) => {
+// 				if (docNull(doc, reject)) {
+//           doc=Object.assign(doc, data)
+					
+//           if (!epValidateSync(doc, reject)) return
+// 					doc.save().then(resolve).catch(reject)
+// 				}
+// 			})
+// 			.catch(reject)
+// 	})
+// }
+
+function deleteItem(member, dbModel, req) {
+	return new Promise((resolve, reject) => {
+		if (req.params.param1 == undefined)
+			return restError.param1(req, next)
 		let data = req.body || {}
 		data._id = req.params.param1
-		dbModel.machines
-			.findOne({ _id: data._id })
-			.then((doc) => {
-				if (docNull(doc, reject)) {
-					let newDoc = new dbModel.machines(Object.assign({}, doc, data))
-					if (!epValidateSync(newDoc, reject)) return
-					newDoc.save().then(resolve).catch(reject)
-				}
-			})
-			.catch(reject)
-
-		newDoc.save().then(resolve).catch(reject)
+		dbModel.machineLog.removeOne(member, { _id: data._id }).then(resolve).catch(reject)
 	})
 }

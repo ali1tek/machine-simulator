@@ -39,7 +39,7 @@ global.sendToTrash = (dbModel, collectionName, member, filter) =>
 
 							let k = keys[index]
 							let relationFilter
-							let errMessage = `Bu kayit <b>${k}</b> tablosuna baglidir.`
+							let errMessage = `The document related to '${k}'`
 							if (Array.isArray(relations[k])) {
 								if (relations[k].length > 0)
 									if (typeof relations[k][0] == 'string') {

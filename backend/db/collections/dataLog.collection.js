@@ -4,7 +4,7 @@ module.exports = function (dbModel) {
 		{
 			machine: {
 				type: mongoose.Types.ObjectId,
-				ref: 'machines',
+				ref: 'machine',
 				required: true,
 				index: true,
 			},

@@ -24,7 +24,7 @@ module.exports = (app) =>
 			res.status(200).json({ success: true, data: apiWelcomeMessage })
 		})
 
-		masterControllers(app, '/api/v1/:func/:param1/:param2/:param3', 'master')
+		masterControllers(app, '/api/v1/:func/:param1/:param2/:param3', 'controllers')
 
 		// catch 404 and forward to error handler
 		app.use((req, res, next) => {
@@ -57,7 +57,7 @@ function masterControllers(app, route, folder) {
 						else {
 							res.status(200).json({
 								success: true,
-								data: clearProtectedFields(req.params.func, data),
+								data: data,
 							})
 						}
 					})
@@ -70,10 +70,10 @@ function masterControllers(app, route, folder) {
 function getController(folder, funcName) {
 	const controllerName = path.join(
 		__dirname,
-		'/controllers',
 		folder,
 		`${funcName}.controller.js`
 	)
+  console.log(`controllerName`, controllerName)
 	if (fs.existsSync(controllerName) == false) {
 		return null
 	} else {
